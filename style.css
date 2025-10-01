@@ -1,0 +1,897 @@
+/* ===== CSS أسطوري مع تأثيرات الظلال ===== */
+/* ===== إعدادات أساسية وإعادة تعيين ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  transition: all 0.3s ease;
+}
+
+:root {
+  --primary-color: #1177cb;
+  --secondary-color: #2575fc;
+  --accent-color: #ff5e62;
+  --dark-color: #3f2c54;
+  --light-color: #f7f7f7;
+  --success-color: #2ecc71;
+  --warning-color: #f39c12;
+  --danger-color: #e74c3c;
+  --shadow-color: rgba(0, 0, 0, 0.1);
+  --glow-color: rgba(17, 203, 194, 0.3);
+  --border-radius: 12px;
+  --box-shadow: 0 10px 30px var(--shadow-color);
+  --text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* ===== أنماط النصوص والعناوين ===== */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #15095a 100%);
+  color: #333;
+  line-height: 1.6;
+  padding: 20px;
+  min-height: 100vh;
+  direction: rtl;
+}
+
+h1 {
+  font-size: 2.8rem;
+  text-align: center;
+  margin-bottom: 2rem;
+  color: white;
+  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3), 0 0 20px var(--glow-color);
+  position: relative;
+  padding-bottom: 15px;
+}
+
+h1::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 50%;
+  transform: translateX(50%);
+  width: 150px;
+  height: 4px;
+  background: linear-gradient(to right, var(--accent-color), var(--secondary-color));
+  border-radius: 2px;
+  box-shadow: 0 2px 10px rgba(255, 94, 98, 0.5);
+}
+.example-link {
+  display: block;
+  text-align: center;
+  margin-bottom: 20px;
+  background-color: white;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  width: fit-content;
+  font-weight: bold;
+  font-size: 1rem;
+  margin: auto;
+}
+/* ===== أنماط النماذج والإدخال ===== */
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: white;
+  text-shadow: var(--text-shadow);
+  font-size: 1.1rem;
+}
+
+input, select {
+  width: 100%;
+  padding: 14px 18px;
+  margin-bottom: 20px;
+  border: none;
+  border-radius: var(--border-radius);
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: var(--box-shadow), inset 0 2px 4px rgba(0, 0, 0, 0.1);
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+input:focus, select:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(37, 117, 252, 0.3), var(--box-shadow), inset 0 2px 4px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+input::placeholder {
+  color: #aaa;
+}
+
+/* ===== أنماط الأزرار ===== */
+button {
+  padding: 14px 24px;
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  box-shadow: var(--box-shadow);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+#addBtn {
+  background: linear-gradient(135deg, var(--success-color), #27ae60);
+  color: white;
+  margin-left: 10px;
+}
+
+#addBtn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 25px rgba(46, 204, 113, 0.4);
+}
+
+#addBtn:active {
+  transform: translateY(1px);
+}
+
+#deleteBtn {
+  background: linear-gradient(135deg, var(--danger-color), #c0392b);
+  color: white;
+}
+
+#deleteBtn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 25px rgba(231, 76, 60, 0.4);
+}
+
+#deleteBtn:active {
+  transform: translateY(1px);
+}
+
+.delete-btn {
+  background: linear-gradient(135deg, #e74c3c, #c0392b);
+  color: white;
+  padding: 8px 16px;
+  font-size: 0.9rem;
+}
+
+.delete-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 15px rgba(231, 76, 60, 0.4);
+}
+
+/* ===== أنماط قائمة المهام ===== */
+#taskList {
+  list-style: none;
+  margin-top: 30px;
+}
+
+.task-item {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: var(--border-radius);
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: var(--box-shadow);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s ease;
+  border-left: 5px solid var(--primary-color);
+}
+
+.task-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(to left, var(--primary-color), var(--secondary-color));
+}
+
+.task-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.task-Number {
+  font-weight: 700;
+  color: var(--dark-color);
+  font-size: 1.2rem;
+  display: inline-block;
+  margin-bottom: 8px;
+  text-shadow: var(--text-shadow);
+}
+
+.task-Title {
+  font-weight: 600;
+  color: #444;
+  font-size: 1.1rem;
+  display: inline-block;
+  margin-bottom: 8px;
+}
+
+.task-Time, .task-Season {
+  color: #666;
+  display: inline-block;
+  margin-bottom: 8px;
+}
+
+.task-Link {
+  color: var(--secondary-color);
+  text-decoration: none;
+  font-weight: 600;
+  display: inline-block;
+  margin: 10px 0;
+  padding: 6px 12px;
+  border-radius: 6px;
+  background: rgba(37, 117, 252, 0.1);
+  transition: all 0.3s ease;
+}
+
+.task-Link:hover {
+  background: rgba(37, 117, 252, 0.2);
+  text-decoration: underline;
+  transform: translateX(-3px);
+}
+
+.select-checkbox {
+  width: auto;
+  margin: 15px 0 0 10px;
+  transform: scale(1.3);
+}
+
+/* ===== تأثيرات خاصة للعناصر المحددة ===== */
+.task-item.selected {
+  background: rgba(255, 245, 230, 0.95);
+  border-left: 5px solid var(--warning-color);
+}
+
+.task-item.important {
+  background: rgba(255, 243, 243, 0.95);
+  border-left: 5px solid var(--danger-color);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  }
+  50% {
+    box-shadow: 0 10px 30px rgba(231, 76, 60, 0.3);
+  }
+  100% {
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  }
+}
+
+/* ===== أنماط الفاصل ===== */
+hr {
+  border: none;
+  height: 2px;
+  background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.5), transparent);
+  margin: 30px 0;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* ===== تأثيرات الظلال المتقدمة ===== */
+.epic-shadow {
+  box-shadow: 
+    0 2.8px 2.2px rgba(0, 0, 0, 0.02),
+    0 6.7px 5.3px rgba(0, 0, 0, 0.028),
+    0 12.5px 10px rgba(0, 0, 0, 0.035),
+    0 22.3px 17.9px rgba(0, 0, 0, 0.042),
+    0 41.8px 33.4px rgba(0, 0, 0, 0.05),
+    0 100px 80px rgba(0, 0, 0, 0.07);
+}
+
+.deep-shadow {
+  box-shadow: 
+    0 10px 20px rgba(0, 0, 0, 0.19),
+    0 6px 6px rgba(0, 0, 0, 0.23);
+}
+
+.float-shadow {
+  box-shadow: 
+    0 1px 2px rgba(0, 0, 0, 0.07),
+    0 2px 4px rgba(0, 0, 0, 0.07),
+    0 4px 8px rgba(0, 0, 0, 0.07),
+    0 8px 16px rgba(0, 0, 0, 0.07),
+    0 16px 32px rgba(0, 0, 0, 0.07),
+    0 32px 64px rgba(0, 0, 0, 0.07);
+}
+
+/* ===== تأثيرات التوهج ===== */
+.glow-primary {
+  box-shadow: 0 0 10px var(--primary-color), 0 0 20px var(--primary-color), 0 0 40px var(--primary-color);
+}
+
+.glow-secondary {
+  box-shadow: 0 0 10px var(--secondary-color), 0 0 20px var(--secondary-color), 0 0 40px var(--secondary-color);
+}
+
+.glow-accent {
+  box-shadow: 0 0 10px var(--accent-color), 0 0 20px var(--accent-color), 0 0 40px var(--accent-color);
+}
+
+/* ===== أنماط الحاوية الرئيسية ===== */
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.1),
+    inset 0 1px 1px rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+/* ===== أنماط الأقسام ===== */
+.form-section {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: var(--border-radius);
+  padding: 25px;
+  margin-bottom: 30px;
+  box-shadow: 
+    0 4px 15px rgba(0, 0, 0, 0.1),
+    inset 0 1px 1px rgba(255, 255, 255, 0.2);
+}
+
+.buttons-section {
+  display: flex;
+  justify-content: space-between;
+  margin: 25px 0;
+}
+
+/* ===== تأثيرات النص ===== */
+.text-glow {
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.8), 0 0 10px rgba(255, 255, 255, 0.6), 0 0 15px rgba(255, 255, 255, 0.4);
+}
+
+.text-shadow {
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* ===== أنماط الرأس ===== */
+.header {
+  text-align: center;
+  padding: 20px 0;
+  margin-bottom: 30px;
+  position: relative;
+}
+
+.header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(106, 17, 203, 0.2), rgba(37, 117, 252, 0.2));
+  border-radius: 20px;
+  z-index: -1;
+}
+
+/* ===== أنماط الفلاتر ===== */
+.filter-section {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 25px;
+  flex-wrap: wrap;
+}
+
+.filter-btn {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 10px 20px;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.filter-btn.active {
+  background: rgba(255, 255, 255, 0.4);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+}
+
+.filter-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
+}
+
+/* ===== تأثيرات خاصة ===== */
+.hover-lift:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.hover-glow:hover {
+  box-shadow: 0 0 15px rgba(106, 17, 203, 0.5);
+}
+
+.hover-shake:hover {
+  animation: shake 0.5s ease-in-out;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+/* ===== أنماط الحالة ===== */
+.status-done {
+  opacity: 0.7;
+  position: relative;
+}
+
+.status-done::after {
+  content: '✓';
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: var(--success-color);
+  color: white;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.status-urgent {
+  border-left: 5px solid var(--danger-color);
+  animation: blink 2s infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.8; }
+}
+
+/* ===== تأثيرات متقدمة ===== */
+.parallax-effect {
+  transform-style: preserve-3d;
+}
+
+.parallax-effect::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(106, 17, 203, 0.1), rgba(37, 117, 252, 0.1));
+  border-radius: var(--border-radius);
+  transform: translateZ(-10px);
+  z-index: -1;
+}
+
+.gradient-border {
+  position: relative;
+  border-radius: var(--border-radius);
+  padding: 3px;
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color), var(--accent-color));
+}
+
+.gradient-border > div {
+  background: white;
+  border-radius: calc(var(--border-radius) - 3px);
+  padding: 20px;
+}
+
+/* ===== أنماط التمرير ===== */
+.scroll-container {
+  max-height: 500px;
+  overflow-y: auto;
+  padding-right: 10px;
+}
+
+.scroll-container::-webkit-scrollbar {
+  width: 8px;
+}
+
+.scroll-container::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+}
+
+.scroll-container::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, var(--primary-color), var(--secondary-color));
+  border-radius: 10px;
+}
+
+.scroll-container::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(to bottom, var(--secondary-color), var(--accent-color));
+}
+
+/* ===== تأثيرات الحركة ===== */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.floating {
+  animation: float 5s ease-in-out infinite;
+}
+
+@keyframes slideIn {
+  from { transform: translateX(100px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+.slide-in {
+  animation: slideIn 0.5s ease-out;
+}
+
+/* ===== أنماط الوسم ===== */
+.badge {
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.badge-primary {
+  background: var(--primary-color);
+  color: white;
+}
+
+.badge-secondary {
+  background: var(--secondary-color);
+  color: white;
+}
+
+.badge-accent {
+  background: var(--accent-color);
+  color: white;
+}
+
+/* ===== أنماط التبويب ===== */
+.tabs {
+  display: flex;
+  margin-bottom: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: var(--border-radius);
+  padding: 5px;
+}
+
+.tab {
+  flex: 1;
+  text-align: center;
+  padding: 12px;
+  cursor: pointer;
+  border-radius: calc(var(--border-radius) - 5px);
+  transition: all 0.3s ease;
+}
+
+.tab.active {
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* ===== تأثيرات الإشعارات ===== */
+.notification {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  padding: 15px 25px;
+  border-radius: var(--border-radius);
+  color: white;
+  box-shadow: var(--box-shadow);
+  z-index: 1000;
+  animation: slideIn 0.5s ease-out;
+}
+
+.notification.success {
+  background: var(--success-color);
+}
+
+.notification.error {
+  background: var(--danger-color);
+}
+
+.notification.warning {
+  background: var(--warning-color);
+}
+
+/* ===== تأثيرات الظلال النصية ===== */
+.shadow-text {
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.double-shadow-text {
+  text-shadow: 
+    2px 2px 4px rgba(0, 0, 0, 0.3),
+    4px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.glow-text {
+  text-shadow: 
+    0 0 5px rgba(255, 255, 255, 0.8),
+    0 0 10px rgba(255, 255, 255, 0.6),
+    0 0 15px rgba(255, 255, 255, 0.4);
+}
+
+/* ===== أنماط البطاقات ===== */
+.card {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: var(--border-radius);
+  padding: 20px;
+  box-shadow: var(--box-shadow);
+  margin-bottom: 20px;
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+.card-header {
+  font-weight: bold;
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.card-body {
+  padding: 10px 0;
+}
+
+/* ===== تأثيرات الخلفية ===== */
+.background-pattern {
+  background-image: 
+    radial-gradient(circle at 25% 25%, rgba(255, 255, 255, 0.2) 0%, transparent 55%),
+    radial-gradient(circle at 75% 75%, rgba(255, 255, 255, 0.2) 0%, transparent 55%);
+}
+
+.background-gradient {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.background-animated {
+  background: linear-gradient(-45deg, #667eea, #764ba2, #f093fb, #f5576c);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+}
+
+@keyframes gradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ===== أنماط الاستجابة ===== */
+@media (max-width: 768px) {
+  .container {
+    padding: 15px;
+  }
+  
+  h1 {
+    font-size: 2rem;
+  }
+  
+  .buttons-section {
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  button {
+    width: 100%;
+  }
+  
+  .filter-section {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 1.8rem;
+  }
+  
+  .task-item {
+    padding: 15px;
+  }
+  
+  input, select {
+    padding: 12px 15px;
+  }
+}
+
+/* ===== تأثيرات الظلال المتداخلة ===== */
+.nested-shadow {
+  box-shadow: 
+    inset 0 2px 4px rgba(255, 255, 255, 0.5),
+    0 5px 15px rgba(0, 0, 0, 0.1),
+    0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.double-shadow {
+  box-shadow: 
+    0 5px 15px rgba(0, 0, 0, 0.1),
+    0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.triple-shadow {
+  box-shadow: 
+    0 1px 3px rgba(0, 0, 0, 0.12),
+    0 1px 2px rgba(0, 0, 0, 0.24),
+    0 3px 6px rgba(0, 0, 0, 0.16);
+}
+
+/* ===== تأثيرات الإضاءة ===== */
+.light-effect {
+  position: relative;
+  overflow: hidden;
+}
+
+.light-effect::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+  transform: rotate(30deg);
+}
+
+/* ===== تأثيرات الحدود ===== */
+.border-gradient {
+  border: 3px solid transparent;
+  background: 
+    linear-gradient(white, white) padding-box,
+    linear-gradient(135deg, var(--primary-color), var(--secondary-color)) border-box;
+}
+
+.border-dashed {
+  border: 2px dashed rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.border-dotted {
+  border: 2px dotted rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* ===== تأثيرات النص المتحرك ===== */
+.marquee {
+  white-space: nowrap;
+  overflow: hidden;
+  position: relative;
+}
+
+.marquee span {
+  display: inline-block;
+  padding-right: 100%;
+  animation: marquee 15s linear infinite;
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(100%); }
+}
+
+/* ===== تأثيرات الشريط التقدمي ===== */
+.progress-bar {
+  height: 10px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 5px;
+  overflow: hidden;
+  margin: 15px 0;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(106, 17, 203, 0.5);
+  animation: progress 2s ease-in-out infinite;
+}
+
+@keyframes progress {
+  0% { width: 0%; }
+  50% { width: 100%; }
+  100% { width: 0%; }
+}
+
+/* ===== أنماط الأيقونات ===== */
+.icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  margin-left: 10px;
+}
+
+.icon-lg {
+  width: 60px;
+  height: 60px;
+}
+
+.icon-sm {
+  width: 30px;
+  height: 30px;
+}
+
+/* ===== تأثيرات التحويل ===== */
+.transform-rotate:hover {
+  transform: rotate(5deg);
+}
+
+.transform-skew:hover {
+  transform: skew(-5deg);
+}
+
+.transform-scale:hover {
+  transform: scale(1.05);
+}
+
+/* ===== تأثيرات التعتيم ===== */
+.fade-in {
+  animation: fadeIn 1s ease-in;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.fade-out {
+  animation: fadeOut 1s ease-out;
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+/* ===== تأثيرات المخطط التفصيلي ===== */
+.outline-glow:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(106, 17, 203, 0.5);
+}
+
+.outline-dashed {
+  outline: 2px dashed var(--primary-color);
+  outline-offset: 3px;
+}
+
+/* ===== تأثيرات الطبقات المتعددة ===== */
+.multi-layer {
+  position: relative;
+}
+
+.multi-layer::before,
+.multi-layer::after {
+  content: '';
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  bottom: 5px;
+  left: 5px;
+  border-radius: var(--border-radius);
+  z-index: -1;
+}
+
+.multi-layer::before {
+  background: rgba(106, 17, 203, 0.1);
+  transform: translate(-5px, -5px);
+}
+
+.multi-layer::after {
+  background: rgba(37, 117, 252, 0.1);
+  transform: translate(5px, 5px);
+}
+
+/* ===== نهاية ملف CSS الأسطوري ===== */

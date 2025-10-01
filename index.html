@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <title>قائمة الاختبارات المتقدمة</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+
+  <h1>📋 قائمة الاختبارات التي تم اكمالها</h1>
+    <a href="example.html" class="example-link">مثال على قائمة الاختبارات</a>
+  <!-- البحث -->
+  <label for="search">بحث عن الاختبار من عنوانه:</label>
+  <input type="text" id="search" name="search" placeholder="اكتب للبحث...">
+  <br><br>
+
+  <!-- إدخال الاختبار -->
+  <label for="taskTitle">عنوان الاختبار:</label>
+  <input type="text" id="taskTitle" name="taskTitle" placeholder="اكتب العنوان...">
+  <br>
+
+  <label for="taskLink">رابط الاختبار:</label>
+  <input type="text" id="taskLink" name="taskLink" placeholder="اكتب الرابط...">
+  <br>
+
+  <label for="taskTime">الموعد (أ، ب، ج، د):</label>
+  <input type="text" id="taskTime" name="taskTime" maxlength="1" placeholder="أ، ب، ج، د">
+  <br>
+
+  <label for="taskSeason">نوع الاختبار:</label>
+  <select id="taskSeason" name="taskSeason">
+    <option value="صيف">صيف</option>
+    <option value="شتاء">شتاء</option>
+    <option value="خريف">خريف</option>
+    <option value="ربيع">ربيع</option>
+  </select>
+  <br>
+
+  <label for="taskNumber">رقم النموذج:</label>
+  <input type="number" id="taskNumber" name="taskNumber" placeholder="اكتب رقم النموذج">
+  <br><br>
+
+  <!-- أزرار -->
+  <button id="addBtn"><i class="fas fa-plus"></i> إضافة اختبار</button>
+
+  <hr>
+  <h1>قائمة الاختبارات</h1>
+  <!-- قائمة الاختبارات -->
+  <ul id="taskList">
+    
+  </ul>
+
+  <script src="index.js"></script>
+    
+</body>
+</html>
