@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 const checkboxes = document.querySelectorAll("input");
 function handleCheck(event) {
 const title  = document.getElementById("title1");
@@ -19,3 +20,26 @@ const title  = document.getElementById("title2");
         title.style.color = "red"
     }
 }
+=======
+const checkboxes = document.querySelectorAll("input");
+function handleCheck(event) {
+const title  = document.getElementById("title1");
+    if (event.target.checked) {
+        title.style.textDecoration = "line-through"
+        title.style.color = "green"
+    } else {
+        title.style.textDecoration = "none"
+        title.style.color = "red"
+    }
+}
+function handleCheck2(event) {
+const title  = document.getElementById("title2");
+    if (event.target.checked) {
+        title.style.textDecoration = "line-through"
+        title.style.color = "green"
+    } else {
+        title.style.textDecoration = "none"
+        title.style.color = "red"
+    }
+}
+>>>>>>> d2ff406 (تحديث الموقع بعد التعديلات)
