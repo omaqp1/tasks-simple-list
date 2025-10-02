@@ -1,280 +1,0 @@
-<<<<<<< HEAD
-<!DOCTYPE html>
-<html lang="ar">
-<head>
-  <meta charset="UTF-8">
-  <title>قائمة الاختبارات المتقدمة</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-</head>
-<body>
-
-  <h1>📋 قائمة الاختبارات التي تم اكمالها</h1>
-    <a href="example.html" class="example-link">مثال على قائمة الاختبارات</a>
-  <!-- البحث -->
-  <label for="search">بحث عن الاختبار من عنوانه:</label>
-  <input type="text" id="search" name="search" placeholder="اكتب للبحث...">
-  <br><br>
-
-  <!-- إدخال الاختبار -->
-  <label for="taskTitle">عنوان الاختبار:</label>
-  <input type="text" id="taskTitle" name="taskTitle" placeholder="اكتب العنوان...">
-  <br>
-
-  <label for="taskLink">رابط الاختبار:</label>
-  <input type="text" id="taskLink" name="taskLink" placeholder="اكتب الرابط...">
-  <br>
-
-  <label for="taskTime">الموعد (أ، ب، ج، د):</label>
-  <input type="text" id="taskTime" name="taskTime" maxlength="1" placeholder="أ، ب، ج، د">
-  <br>
-
-  <label for="taskSeason">نوع الاختبار:</label>
-  <select id="taskSeason" name="taskSeason">
-    <option value="صيف">صيف</option>
-    <option value="شتاء">شتاء</option>
-    <option value="خريف">خريف</option>
-    <option value="ربيع">ربيع</option>
-  </select>
-  <br>
-
-  <label for="taskNumber">رقم النموذج:</label>
-  <input type="number" id="taskNumber" name="taskNumber" placeholder="اكتب رقم النموذج">
-  <br><br>
-
-  <!-- أزرار -->
-  <button id="addBtn"><i class="fas fa-plus"></i> إضافة اختبار</button>
-
-  <hr>
-  <h1>قائمة الاختبارات</h1>
-  <!-- قائمة الاختبارات -->
-  <ul id="taskList">
-    
-  </ul>
-
-  <script src="index.js"></script>
-    
-</body>
-</html>
-=======
-<!DOCTYPE html>
-<html lang="ar">
-<head>
-  <meta charset="UTF-8">
-  <title>قائمة الاختبارات المتقدمة</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-</head>
-<body>
-
-  <h1>📋 قائمة الاختبارات التي تم اكمالها</h1>
-    <a href="example.html" class="example-link">مثال على قائمة الاختبارات</a>
-  <!-- البحث -->
-  <label for="search">بحث عن الاختبار من عنوانه:</label>
-  <input type="text" id="search" name="search" placeholder="اكتب للبحث..." >
-  <br><br>
-
-  <div id="formSection" class="form-section">
-  <!-- إدخال الاختبار -->
-  <label for="taskTitle" id="taskTitleLabel">عنوان الاختبار:</label>
-  <input type="text" id="taskTitle" name="taskTitle" placeholder="اكتب العنوان...">
-  <br>
-
-  <label for="taskLink" id="taskLinkLabel">رابط الاختبار:</label>
-  <input type="text" id="taskLink" name="taskLink" placeholder="اكتب الرابط...">
-  <br>
-
-  <label for="taskTime" id="taskTimeLabel">الموعد (أ، ب، ج، د):</label>
-  <input type="text" id="taskTime" name="taskTime" maxlength="1" placeholder="أ، ب، ج، د">
-  <br>
-
-  <label for="taskSeason" id="taskSeasonLabel">نوع الاختبار:</label>
-  <select id="taskSeason" name="taskSeason">
-    <option value="صيف">صيف</option>
-    <option value="شتاء">شتاء</option>
-    <option value="خريف">خريف</option>
-    <option value="ربيع">ربيع</option>
-  </select>
-  <br>
-
-  <label for="taskNumber" id="taskNumberLabel">رقم النموذج:</label>
-  <input type="number" id="taskNumber" name="taskNumber" placeholder="اكتب رقم النموذج">
-  <br><br>
-
-  <!-- أزرار -->
-  <button id="addBtn"><i class="fas fa-plus"></i> إضافة اختبار</button>
-  </div>
-  <hr>
-  <h1>قائمة الاختبارات</h1>
-  <!-- قائمة الاختبارات -->
-  <ul id="taskList">
-    
-  </ul>
-
-  <script>
-
-
-    // استدعاء العناصر
-const addBtn = document.getElementById("addBtn");
-const taskList = document.getElementById("taskList");
-const searchInput = document.getElementById("search");
-
-// استرجاع المهام من localStorage أو إنشاء مصفوفة جديدة
-let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
-
-// حفظ المهام في localStorage
-function saveTasks() {
-  localStorage.setItem("tasks", JSON.stringify(tasks));
-}
-const searchBox = document.getElementById("search");
-// إظهار أو إخفاء قسم الإدخال بناءً على البحث
-searchBox.addEventListener("input", () => {
-  if (searchBox.value === "") {
-    document.getElementById('formSection').style.display = "block";
-  } else {
-    document.getElementById('formSection').style.display = "none";
-  }
-});
-// عند تحميل الصفحة، تحقق من قيمة البحث
-if (searchBox.value === "") {
-  document.getElementById('formSection').style.display = "block";
-} else {
-  document.getElementById('formSection').style.display = "none";
-}
-// إنشاء عنصر الاختبار في DOM
-function createTaskElement(task, index) {
-  const li = document.createElement("li");
-  li.className = "task-item";
-
-  // تشيك بوكس واحد لكل مهمة
-  const checkbox = document.createElement("input");
-  checkbox.type = "checkbox";
-  checkbox.className = "select-checkbox";
-  checkbox.checked = task.completed;
-
-  // عنوان الاختبار
-  const title = document.createElement("span");
-  title.className = "task-Title";
-  title.textContent = `عنوان الاختبار: ${task.title}`;
-  title.style.color = task.completed ? "green" : "red";
-  title.style.textDecoration = task.completed ? "line-through" : "none";
-
-  // عند تغيير حالة التشيك بوكس
-  checkbox.addEventListener("change", () => {
-    task.completed = checkbox.checked;
-    title.style.textDecoration = checkbox.checked ? "line-through" : "none";
-    title.style.color = checkbox.checked ? "green" : "red";
-    saveTasks();
-  });
-
-  // رابط الاختبار
-  const link = document.createElement("a");
-  link.href = task.link;
-  link.target = "_blank";
-  link.className = "task-Link";
-  link.textContent = "🔗 رابط الاختبار";
-
-  // التفاصيل الأخرى
-  
-  const number = document.createElement("span");
-  number.className = "task-Number";
-  number.textContent = `رقم النموذج: ${task.number}`;
-
-  if (!task.number) {
-    number.textContent = "رقم النموذج: غير محدد";
-  }
-
-  const time = document.createElement("span");
-  time.className = "task-Time";
-  time.textContent = `الموعد: ${task.time}`;
-  if (!task.time) {
-    time.textContent = "الموعد: غير محدد";
-  }
-
-  const season = document.createElement("span");
-  season.className = "task-Season";
-  season.textContent = `نوع الاختبار: ${task.season}`;
-
-  // زر حذف الاختبار
-  const deleteBtn = document.createElement("button");
-  deleteBtn.type = "button";
-  deleteBtn.className = "delete-btn";
-  deleteBtn.textContent = "حذف";
-  deleteBtn.addEventListener("click", () => {
-    tasks.splice(index, 1);
-    renderTasks();
-    saveTasks();
-  });
-
-  // تجميع كل العناصر داخل الـ li
-  li.appendChild(checkbox);
-  li.appendChild(title);
-  li.appendChild(document.createElement("br"));
-  li.appendChild(number);
-  li.appendChild(document.createElement("br"));
-  li.appendChild(time);
-  li.appendChild(document.createElement("br"));
-  li.appendChild(season);
-  li.appendChild(document.createElement("br"));
-  li.appendChild(link);
-  li.appendChild(deleteBtn);
-
-  return li;
-}
-
-// إعادة رسم كل المهام
-function renderTasks() {
-  taskList.innerHTML = "";
-  tasks.forEach((task, index) => {
-    taskList.appendChild(createTaskElement(task, index));
-  });
-}
-
-// إضافة اختبار جديد
-addBtn.addEventListener("click", () => {
-  const task = {
-    title: document.getElementById("taskTitle").value,
-    link: document.getElementById("taskLink").value,
-    time: document.getElementById("taskTime").value,
-    season: document.getElementById("taskSeason").value,
-    number: document.getElementById("taskNumber").value,
-    completed: false
-  };
-
-  if (!task.title || !task.link) {
-    alert("يرجى إدخال العنوان والرابط!");
-    return;
-  }
-
-  tasks.push(task);
-  renderTasks();
-  saveTasks();
-
-  // تفريغ الحقول
-  document.getElementById("taskTitle").value = "";
-  document.getElementById("taskLink").value = "";
-  document.getElementById("taskTime").value = "";
-  document.getElementById("taskNumber").value = "";
-});
-
-// البحث في المهام
-searchInput.addEventListener("input", () => {
-  const query = searchInput.value.toLowerCase();
-  const filtered = tasks.filter(task => 
-    task.title.toLowerCase().includes(query) || 
-    task.number.includes(query)
-  );
-  taskList.innerHTML = "";
-  filtered.forEach((task, index) => {
-    taskList.appendChild(createTaskElement(task, tasks.indexOf(task)));
-  });
-});
-
-// رسم المهام عند تحميل الصفحة
-renderTasks();
-
-  </script>
-    
-</body>
-</html>
->>>>>>> d2ff406 (تحديث الموقع بعد التعديلات)
